@@ -1,0 +1,17 @@
+{
+  "name": "cli-codedrill",
+  "version": "1.0.0",
+  "description": "A cli tool for code-drill(atleast for now)",
+  "main": "index.js",
+  "preferGlobal": true,
+  "bin": "./commands.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^2.15.1",
+    "inquirer": "^5.2.0"
+  }
+}
