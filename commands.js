@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 const program = require('commander')
 const { prompt} = require('inquirer')
-const setHandle = require('./index')
+const saveHandle = require('./util').saveHandle
+const initialScrape = require('./lib/initial_scraper')
 
 const userHandle = {
     type: 'input',
@@ -24,9 +25,18 @@ program
     .option('-f, --codeforces','for codeforces account')
     .description('Takes the handle from user for further queries')
     .action( (userHandle, cmd) => {
-        if (cmd.codechef) handle = setHandle(userHandle,'cc')
-        else if (cmd.codeforces) handle = setHandle(userHandle,'cf')
-        else if (cmd.spoj) handle = setHandle(userHandle,'sp')
+        if (cmd.codechef) {
+            handle = saveHandle(userHandle,'cc')
+            initialScrape(userHandle,'cc')
+        }
+        else if (cmd.codeforces) {
+            handle = saveHandle(userHandle,'cf')
+            initialScrape(userHandle,'cf')
+        }
+        else if (cmd.spoj) {
+            handle = saveHandle(userHandle,'sp')
+            initialScrape(userHandle,'sp')
+        }
         else console.error('Missing options! See handle --help')
                
     })
