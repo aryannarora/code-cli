@@ -1,8 +1,12 @@
-let handle, platform
+const fs = require('fs')
 
 function saveHandle(userhandle, site) {
-    handle = userhandle
-    platform = site    
+    let handle = `${site}%2F${userhandle}`
+    //Replace the file with a new one:
+    fs.writeFile('info.txt', handle, function (err) {
+    if (err) throw err;
+    });
 }
 
-module.exports = { saveHandle}
+
+module.exports = { saveHandle }
